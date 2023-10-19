@@ -1,12 +1,11 @@
-import FormularioLogin from '../../components/formularioLogin/formularioLogin';
+import FormLogin from '../../components/forms/FormLogin';
 import './Styles.scss';
 
 const Login = () => {
   return (
     <>
-        <main className='background-container'>
-        </main>
-        <FormularioLogin />
+        <main className='background-container' />
+        <FormLogin />
     </>
     )
 }

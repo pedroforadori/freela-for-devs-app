@@ -1,8 +1,12 @@
-import Login from './pages/login/Login'
+import AppRoutes from "./router"
+import { ThemeProvider } from "./context/Theme"
 
 function App() {
   return (
-    <Login />
+    <ThemeProvider>
+      <AppRoutes />
+    </ThemeProvider>
+    
   )
 }
 
