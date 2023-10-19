@@ -24,12 +24,6 @@
         color: var(--light);
     }
 
-    @media screen and (max-width: 640px) { 
-        .searchTerm{
-            padding: 10px;
-        }
-    }
-    
     .searchTerm{
         svg{
             color: var(--light);

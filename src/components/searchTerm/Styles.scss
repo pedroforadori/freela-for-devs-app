@@ -1,22 +1,16 @@
-// input[type=email],
-// input[type=text], 
-// input[type=password]
-// {
-//     box-sizing: border-box;
-//     background-color: transparent;
-//     border-bottom: #fff 1px solid;
-//     color: #fff;
-//     font-weight: bold;
-// }
-
-// svg{
-//     color: #fafafa;
-// }
-
-.input-search{
-    padding-left: 250px;
-    padding-right: 250px;
+@media screen and (max-width: 640px) { 
+    .input-search{
+        padding: 10px;
+    }
 }
+
+@media screen and (min-width: 641px) { 
+    .input-search{
+        padding-left: 250px;
+        padding-right: 250px;
+    } 
+}
+
 
 .ico {
     padding: 5px;
