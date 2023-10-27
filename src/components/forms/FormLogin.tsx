@@ -1,25 +1,48 @@
-import { FormEvent } from "react";
+import { FormEvent, useContext, useState } from "react";
 import "./Styles.scss";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/Auth";
 
 const FormLogin = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const { login, isAuth } = useContext(AuthContext);
 
   function handleLogin(event: FormEvent) {
-    event.preventDefault();
+    event.preventDefault()
+    
+    login(email, password)
 
-    navigate("/home");
+    if (isAuth) {
+      navigate("/home") 
+    }
   }
   
   return (
     <section className="container-form">
-      {/* <h1>Faça parte deste time</h1> */}
       <span className="logo">FREELA FOR DEVS</span>
       <form onSubmit={handleLogin} className="inputs">
-        <input type="email" name="" id="" placeholder="E-mail" />
-        <input type="password" name="" id="" placeholder="Senha" />
-        <input type="submit" value="Entrar" />
-
+        <input 
+          type="email" 
+          name="" 
+          id="email" 
+          placeholder="E-mail"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+        />
+        <input 
+          type="password" 
+          name="" 
+          id="password" 
+          placeholder="Senha"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        <input 
+          type="submit" 
+          value="Entrar" 
+        />
         <p>
           Se você não tem conta, <Link to="register">clique aqui</Link>!
         </p>

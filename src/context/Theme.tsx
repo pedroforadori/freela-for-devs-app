@@ -1,13 +1,6 @@
-import { ReactNode, createContext, useState } from 'react'
+import { createContext, useState } from 'react'
+import { PropsType, ThemeContextType } from '../types/ThemeType'
 
-type ThemeContextType = {
-    theme: string;
-    toggleTheme: () => void;
-}
-
-type PropsType = {
-    children?: ReactNode
-}
 export const ThemeContext = createContext<ThemeContextType>({} as ThemeContextType )
 
 export const ThemeProvider = ({ children }: PropsType) => {
