@@ -7,7 +7,15 @@ export type LoginType = {
     whatsapp: string;
     type: number;
     isAuth: boolean;
-    login: (email: string, password: string) => void
+    login: (data: DataType) => void
+}
+
+export type DataType = {
+    id: string;
+    fullname: string;
+    email: string;
+    whatsapp: string;
+    type: number;
 }
 
 export type PropsType = {

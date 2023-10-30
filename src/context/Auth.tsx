@@ -1,29 +1,25 @@
-import { createContext, useState } from "react"
-import { LoginType, PropsType } from "../types/LoginType"
-import { auth } from "../api/Auth"
+import { createContext, useState } from "react";
+import { DataType, LoginType, PropsType } from "../types/LoginType";
 
 export const AuthContext = createContext<LoginType>({} as LoginType);
 
 export const AuthProvider = ({ children }: PropsType) => {
-  const [id, setId] = useState("")
-  const [fullname, setFullname] = useState("")
-  const [email, setEmail] = useState("")
-  const [whatsapp, setWhatsapp] = useState("")
-  const [type, setType] = useState(0)
-  const [isAuth, setIsAuth] = useState(false)
+  const [id, setId] = useState("");
+  const [fullname, setFullname] = useState("");
+  const [email, setEmail] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
+  const [type, setType] = useState(0);
+  const [isAuth, setIsAuth] = useState(false);
 
-  const login = (email: string, password: string) => {
-    auth(email, password).then((response: LoginType) => {
-      const data: LoginType = response;
+  const login = (data: DataType) => {
+    const { id, fullname, email, whatsapp, type }: DataType = data;
 
-      setId(data.id)
-      setFullname(data.fullname)
-      setEmail(data.email)
-      setWhatsapp(data.whatsapp)
-      setType(data.type)
-      setIsAuth(true)
-
-    });
+    setId(id);
+    setFullname(fullname);
+    setEmail(email);
+    setWhatsapp(whatsapp);
+    setType(type);
+    setIsAuth(true);
   };
 
   return (
