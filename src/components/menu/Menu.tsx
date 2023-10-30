@@ -12,6 +12,7 @@ import "./Styles.scss";
 import { ArrowBendRightDown, Moon, SunDim } from "@phosphor-icons/react";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/Theme";
+import { AuthContext } from "../../context/Auth";
 
 const MenuTop = () => {
   function handleSwitch() {
@@ -19,6 +20,7 @@ const MenuTop = () => {
   }
 
   const { toggleTheme } = useContext(ThemeContext);
+  const { fullname } = useContext(AuthContext);
 
   return (
     <nav className="menu">
@@ -33,7 +35,7 @@ const MenuTop = () => {
           _focus={{ boxShadow: "outline" }}
         >
           <span className="icon-text">
-            User <ArrowBendRightDown size={16} />
+          { fullname.split(' ').slice(0, 1).join(' ') } <ArrowBendRightDown size={16} />
           </span>
         </MenuButton>
         <MenuList>
