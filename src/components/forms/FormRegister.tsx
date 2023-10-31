@@ -4,6 +4,7 @@ import { FormEvent, useContext, useState } from "react";
 import { AuthContext } from "../../context/user";
 import Error from "../error/error";
 import { UserType } from "../../types/LoginType";
+import ShowPassword from "../showPassword/showPassword";
 
 const FormRegister = () => {
   const navigate = useNavigate()
@@ -14,6 +15,11 @@ const FormRegister = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [type, setType] = useState(0);
   const { error, create } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false)
+  const [showPasswordConfirm, setShowPasswordConfirm] = useState(false)
+  const handleShowPassword = () => setShowPassword(!showPassword)
+  const handleShowPasswordConfirm = () => setShowPasswordConfirm(!showPasswordConfirm)
+
 
   const handleRegister = (event: FormEvent) => {
     event.preventDefault()
@@ -65,22 +71,23 @@ const FormRegister = () => {
           onChange={(event) => setWhatsapp(event.target.value)}
         />
         <input
-          type="password"
+          type={showPassword ? "text" : "password"}
           name=""
           id="password"
           placeholder="Senha"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
+        <ShowPassword showPassword={showPassword} handleShowPassword={handleShowPassword} />
         <input
-          type="password"
+          type={showPasswordConfirm ? "text" : "password"}
           name=""
           id="confirmPassword"
           placeholder="Confirmar a senha"
           value={confirmPassword}
           onChange={(event) => setConfirmPassword(event.target.value)}
         />
-
+        <ShowPassword showPassword={showPasswordConfirm} handleShowPassword={handleShowPasswordConfirm} />
         <fieldset className="group-radio">
           <div className="radio">
             <label>Trabalhar</label>
