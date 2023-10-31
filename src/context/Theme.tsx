@@ -9,6 +9,7 @@ export const ThemeProvider = ({ children }: PropsType) => {
     const toggleTheme = () => {
         setTheme(theme === "light" ? "dark" : "light")
     }
+    
     return(
         <ThemeContext.Provider value={{theme, toggleTheme}}>
             {children}

@@ -1,24 +1,17 @@
 import { FormEvent, useContext, useState } from "react";
 import "./Styles.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/Auth";
-import { auth } from "../../api/Auth";
 
 const FormLogin = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useContext(AuthContext);
-
-  function handleLogin(event: FormEvent) {
+  
+  const handleLogin = (event: FormEvent) => {
     event.preventDefault();
-    
-    auth(email, password).then((response) => {
-      if (response) {
-        login(response);
-        navigate("/home");
-      }
-    });
+
+    login(email, password)
   }
 
   return (

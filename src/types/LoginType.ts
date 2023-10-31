@@ -1,21 +1,18 @@
 import { ReactNode } from "react";
 
 export type LoginType = {
-    id: string;
-    fullname: string;
-    email: string;
-    whatsapp: string;
-    type: number;
+    user: {
+        id?: string;
+        fullname?: string;
+        email?: string;
+        whatsapp?: string;
+        type?: number;
+        theme?: string;
+    } | null;
+    login: (email: string, password: string) => void;
+    logout: () => void;
     isAuth: boolean;
-    login: (data: DataType) => void
-}
-
-export type DataType = {
-    id: string;
-    fullname: string;
-    email: string;
-    whatsapp: string;
-    type: number;
+    loading: boolean;
 }
 
 export type PropsType = {

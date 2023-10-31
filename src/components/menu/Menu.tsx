@@ -13,14 +13,22 @@ import { ArrowBendRightDown, Moon, SunDim } from "@phosphor-icons/react";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/Theme";
 import { AuthContext } from "../../context/Auth";
+import { useNavigate } from "react-router-dom";
+
 
 const MenuTop = () => {
-  function handleSwitch() {
+  const navigate = useNavigate();
+  const { toggleTheme } = useContext(ThemeContext);
+  const { logout, user } = useContext(AuthContext);
+
+  const handleSwitch = () => {
     toggleTheme();
   }
 
-  const { toggleTheme } = useContext(ThemeContext);
-  const { fullname } = useContext(AuthContext);
+  const handleLogout = () => {
+    logout()
+    navigate("/")
+  }
 
   return (
     <nav className="menu">
@@ -35,7 +43,7 @@ const MenuTop = () => {
           _focus={{ boxShadow: "outline" }}
         >
           <span className="icon-text">
-          { fullname.split(' ').slice(0, 1).join(' ') } <ArrowBendRightDown size={16} />
+          {  user?.fullname?.split(' ').slice(0, 1).join(' ') } <ArrowBendRightDown size={16} />
           </span>
         </MenuButton>
         <MenuList>
@@ -50,6 +58,7 @@ const MenuTop = () => {
               <Moon size={24} style={{ marginLeft: "8px" }} />
             </FormControl>
           </MenuItem>
+          <MenuItem onClick={handleLogout}>Sair</MenuItem>
         </MenuList>
       </Menu>
     </nav>

@@ -15,17 +15,21 @@
     justify-content: center;
     width: 100%;
     height: 70vh;
+
+    p {
+        color: #fff;
+    }
+
+    a {
+        text-decoration: underline;
+    }
 }
 
-.inputs p {
-    color: #fff;
-}
-.inputs a {
-    text-decoration: underline;
-}
+
 
 input[type=email],
-input[type=text], 
+input[type=text],
+input[type=number], 
 input[type=password]
 {
     width: 90%;
@@ -81,4 +85,18 @@ h1{
 
     font-weight: bold;
     font-size: 3em;
+}
+
+.group-radio {
+    display: flex;
+    color:#fff;
+    gap: 3rem;
+    border: none;
+    padding: 10px 0;
+    align-items: center;
+
+    .radio {
+        display: flex;
+        gap: 4px;
+    }
 }
