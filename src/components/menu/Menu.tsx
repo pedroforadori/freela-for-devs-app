@@ -4,12 +4,11 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
-  FormControl,
-  FormLabel,
-  Switch,
+  IconButton,
+  Center,
 } from "@chakra-ui/react";
 import "./Styles.scss";
-import { ArrowBendRightDown, Moon, SunDim } from "@phosphor-icons/react";
+import { ArrowBendRightDown, Moon, Sun } from "@phosphor-icons/react";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/Theme";
 import { AuthContext } from "../../context/Auth";
@@ -18,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 const MenuTop = () => {
   const navigate = useNavigate();
-  const { toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const { logout, user } = useContext(AuthContext);
 
   const handleSwitch = () => {
@@ -32,35 +31,36 @@ const MenuTop = () => {
 
   return (
     <nav className="menu">
-      <h2>Freela For Devs</h2>  
-      <Menu>
-        <MenuButton
-          px='2'
-          py={2}
-          transition="all 0.2s"
-          borderRadius="md"
-          borderWidth="1px"
-          _focus={{ boxShadow: "outline" }}
-        >
-          <span className="icon-text">
-          {  user?.fullname?.split(' ').slice(0, 1).join(' ') } <ArrowBendRightDown size={16} />
-          </span>
-        </MenuButton>
-        <MenuList>
-          <MenuItem>Meu Perfil</MenuItem>
-          <MenuDivider />
-          <MenuItem closeOnSelect={false}>
-            <FormControl display="flex" alignItems="center">
-              <FormLabel htmlFor="theme" mb="0">
-                <SunDim size={24} />
-              </FormLabel>
-              <Switch id="theme" onChange={handleSwitch} />
-              <Moon size={24} style={{ marginLeft: "8px" }} />
-            </FormControl>
-          </MenuItem>
-          <MenuItem onClick={handleLogout}>Sair</MenuItem>
-        </MenuList>
-      </Menu>
+      <h2>Freela For Devs</h2> 
+      <Center gap="4px">
+        <IconButton 
+          variant='outline'
+          icon={theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
+          onClick={handleSwitch} 
+          aria-label={""}        
+        />
+        <Menu>
+          <MenuButton
+            px='2'
+            py={2}
+            transition="all 0.2s"
+            borderRadius="md"
+            borderWidth="1px"
+            _focus={{ boxShadow: "outline" }}
+          >
+            <span className="icon-text">
+            {  user?.fullname?.split(' ').slice(0, 1).join(' ') } <ArrowBendRightDown size={16} />
+            </span>
+          </MenuButton>
+          
+          <MenuList>
+            <MenuItem>Meu Perfil</MenuItem>
+            <MenuDivider />
+            <MenuItem onClick={handleLogout}>Sair</MenuItem>
+          </MenuList>
+        </Menu>
+      </Center> 
+      
     </nav>
   );
 };
