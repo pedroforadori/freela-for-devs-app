@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 export type ThemeContextType = {
-    theme: string | null;
+    theme?: string;
     toggleTheme: () => void;
 }
 

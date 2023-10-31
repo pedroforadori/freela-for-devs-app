@@ -7,7 +7,6 @@ import { Center, Spinner } from "@chakra-ui/react";
 const Routes = () => {
     const { isAuth, loading } = useContext(AuthContext);
 
-    console.log(loading)
     if(loading) {
         return (
             <Center h='100vh'>

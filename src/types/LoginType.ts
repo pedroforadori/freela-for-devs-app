@@ -8,12 +8,13 @@ export type LoginType = {
     email?: string;
     whatsapp?: string;
     type?: number;
-    theme: string;
+    theme?: string;
   } | null;
   login: (email: string, password: string) => void;
   logout: () => void;
   isAuth: boolean;
   loading: boolean;
+  error: boolean;
 };
 
 export type UserType = {

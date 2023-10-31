@@ -5,7 +5,7 @@ const baseUrl = import.meta.env.VITE_REACT_API_URL
 
 export const editTheme = async (id?: string, user?: UserType) => {
   const response = await axios.put(`${baseUrl}/user/${id}`, {
-    Fullname: user?.id,
+    Fullname: user?.fullname,
     Email: user?.email,
     Password: user?.password,
     Whatsapp: user?.whatsapp,

@@ -6,6 +6,7 @@ export const AuthContext = createContext<LoginType>({} as LoginType);
 
 export const AuthProvider = ({ children }: PropsType) => {
   const [user, setUser] = useState<object | null>(null);
+  const [error, setError] = useState(false)
   const [loading, setLoading ] = useState(true)
   
   useEffect(() => {
@@ -24,6 +25,13 @@ export const AuthProvider = ({ children }: PropsType) => {
   const login = async (email: string, password: string) => {
     const response = await auth(email, password)
     setUser(response)
+    if(!response) {
+      setError(true)
+      setTimeout(() => {
+        setError(false)
+      }, 3000);
+      
+    }
     localStorage.setItem("@FFD:user", JSON.stringify(response))
   };
 
@@ -34,7 +42,7 @@ export const AuthProvider = ({ children }: PropsType) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, isAuth: !!user, loading }}
+      value={{ user, login, logout, isAuth: !!user, loading, error }}
     >
       {children}
     </AuthContext.Provider>

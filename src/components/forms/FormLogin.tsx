@@ -1,18 +1,29 @@
-import { FormEvent, useContext, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import "./Styles.scss";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/Auth";
+import Error from "../error/error";
 
 const FormLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useContext(AuthContext);
+  const [buttonError, setButtonError] = useState(false);
+  const { login, error } = useContext(AuthContext);
   
+  useEffect(() => {
+    const enableButton = () => {
+      if(email.length > 3 && password.length > 3){
+        setButtonError(true)
+      }
+    }
+
+    enableButton()
+  }, [email, password])
+
   const handleLogin = (event: FormEvent) => {
     event.preventDefault();
-
-    login(email, password)
-  }
+    login(email, password);
+  };
 
   return (
     <section className="container-form">
@@ -34,11 +45,12 @@ const FormLogin = () => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <input type="submit" value="Entrar" />
+        <input type="submit" value="Entrar" disabled={buttonError ? false : true} />
         <p>
           Se você não tem conta, <Link to="register">clique aqui</Link>!
         </p>
       </form>
+      {error && <Error text="Usuário e/ou senha invalidos!!" />}
     </section>
   );
 };

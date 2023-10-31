@@ -7,7 +7,7 @@ import { UserType } from '../types/LoginType'
 export const ThemeContext = createContext<ThemeContextType>({} as ThemeContextType )
 
 export const ThemeProvider = ({ children }: PropsType) => {
-    const [ theme, setTheme ] = useState("")
+    const [ theme, setTheme ] = useState<string | undefined>("")
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
@@ -17,10 +17,7 @@ export const ThemeProvider = ({ children }: PropsType) => {
     const toggleTheme = () => {
         setTheme(theme === "light" ? "dark" : "light")
 
-        console.log(theme)
- 
         const userObject: UserType = {
-            id: user?.id,
             fullname: user?.fullname,
             password: user?.password,
             email: user?.email,
@@ -30,9 +27,9 @@ export const ThemeProvider = ({ children }: PropsType) => {
         }
 
         editTheme(user?.id, userObject)
+
         localStorage.removeItem("@FFD:user")
         localStorage.setItem("@FFD:user", JSON.stringify(userObject))
-        
     }
     
     return(

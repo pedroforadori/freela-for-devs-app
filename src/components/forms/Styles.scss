@@ -25,8 +25,6 @@
     }
 }
 
-
-
 input[type=email],
 input[type=text],
 input[type=number], 
@@ -49,6 +47,10 @@ input[type=submit]{
     box-sizing: border-box;
     border-radius: 4px;
     background-color: #fff;
+
+    &:disabled{
+        opacity: 0.8;
+    }
 }
 
 input:focus{
