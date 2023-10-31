@@ -1,21 +1,22 @@
 import { createContext, useEffect, useState } from "react";
-import { LoginType, PropsType } from "../types/LoginType";
+import { LoginType, PropsType, UserType } from "../types/LoginType";
 import { auth } from "../api/Auth";
+import { newUser } from "../api/User";
 
 export const AuthContext = createContext<LoginType>({} as LoginType);
 
 export const AuthProvider = ({ children }: PropsType) => {
   const [user, setUser] = useState<object | null>(null);
-  const [error, setError] = useState(false)
+  const [error, setError] = useState("")
   const [loading, setLoading ] = useState(true)
   
   useEffect(() => {
     async function loadStorageData() {
+      setLoading(false)
       const storageUser = localStorage.getItem("@FFD:user")
 
       if(storageUser){
         setUser(JSON.parse(storageUser))
-        setLoading(false)
       }
     }
 
@@ -26,14 +27,29 @@ export const AuthProvider = ({ children }: PropsType) => {
     const response = await auth(email, password)
     setUser(response)
     if(!response) {
-      setError(true)
+      setError("Usuário e/ou senha invalidos!!")
       setTimeout(() => {
-        setError(false)
+        setError("")
       }, 3000);
       
     }
     localStorage.setItem("@FFD:user", JSON.stringify(response))
   };
+
+  const create = async (user: UserType) => {
+    const response = await newUser(user)
+
+    if(!response.errorMessage) {
+      setUser(response)
+      
+    }else {
+      setError("E-mail já está cadastrado!")
+      setTimeout(() => {
+        setError("")
+      }, 3000);
+    }
+    localStorage.setItem("@FFD:user", JSON.stringify(response))
+  }
 
   const logout = () => {
     localStorage.clear()
@@ -42,7 +58,7 @@ export const AuthProvider = ({ children }: PropsType) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, isAuth: !!user, loading, error }}
+      value={{ user, login, logout, isAuth: !!user, loading, error, create }}
     >
       {children}
     </AuthContext.Provider>

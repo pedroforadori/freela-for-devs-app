@@ -14,7 +14,9 @@ export type LoginType = {
   logout: () => void;
   isAuth: boolean;
   loading: boolean;
-  error: boolean;
+  error: string;
+  create: (user: UserType) => object;
+  errorMessage?: string;
 };
 
 export type UserType = {
@@ -25,6 +27,7 @@ export type UserType = {
   whatsapp?: string;
   type?: number;
   theme?: string;
+
 };
 
 export type PropsType = {

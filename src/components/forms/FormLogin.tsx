@@ -1,7 +1,7 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import "./Styles.scss";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/Auth";
+import { AuthContext } from "../../context/user";
 import Error from "../error/error";
 
 const FormLogin = () => {
@@ -50,7 +50,7 @@ const FormLogin = () => {
           Se você não tem conta, <Link to="register">clique aqui</Link>!
         </p>
       </form>
-      {error && <Error text="Usuário e/ou senha invalidos!!" />}
+      {error && <Error text={error} />}
     </section>
   );
 };

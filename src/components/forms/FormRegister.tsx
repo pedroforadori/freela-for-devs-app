@@ -1,18 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Styles.scss";
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
+import { AuthContext } from "../../context/user";
+import Error from "../error/error";
+import { UserType } from "../../types/LoginType";
 
 const FormRegister = () => {
+  const navigate = useNavigate()
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [type, setType] = useState(0);
+  const { error, create } = useContext(AuthContext);
 
   const handleRegister = (event: FormEvent) => {
     event.preventDefault()
-    console.log(type)
+    
+    if(fullname && email && whatsapp && password && confirmPassword && type === 0 || type === 1){
+
+      if(password === confirmPassword){
+        const userObject: UserType = {
+          fullname: fullname,
+          password: password,
+          email: email,
+          whatsapp: whatsapp,
+          type: type,
+          theme: "light"
+        }
+        create(userObject)
+        navigate("/")
+      }
+    }
   }
 
   return (
@@ -34,6 +54,7 @@ const FormRegister = () => {
           placeholder="E-mail"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
+          // onBlur={}
         />
         <input
           type="number"
@@ -89,6 +110,7 @@ const FormRegister = () => {
           Já tem uma conta? <Link to="/">Faça o login aqui</Link>!
         </p>
       </form>
+      {error && <Error text={error} />}
     </section>
   );
 };

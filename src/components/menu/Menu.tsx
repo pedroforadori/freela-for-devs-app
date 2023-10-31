@@ -11,7 +11,7 @@ import "./Styles.scss";
 import { ArrowBendRightDown, Moon, Sun } from "@phosphor-icons/react";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/Theme";
-import { AuthContext } from "../../context/Auth";
+import { AuthContext } from "../../context/user";
 import { useNavigate } from "react-router-dom";
 
 
