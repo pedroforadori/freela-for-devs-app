@@ -11,7 +11,7 @@ export const UserProvider = ({ children }: PropsType) => {
   const [loading, setLoading ] = useState(true)
   
   useEffect(() => {
-    async function loadStorageData() {
+     const loadStorageData = async () => {
       setLoading(false)
       const storageUser = localStorage.getItem("@FFD:user")
 
