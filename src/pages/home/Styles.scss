@@ -6,6 +6,12 @@
     ::placeholder{
         color: var(--dark);
     }
+
+    .menu-fixed{
+        position: sticky;
+        top: 0;
+        background-color: var(--light);
+    }
 }
 
 .home-dark{
@@ -28,5 +34,11 @@
         }
     }
 
-    
+    .menu-fixed{
+        position: sticky;
+        top: 0;
+        background-color: var(--dark);
+        padding-bottom: 8px;
+    }
 }
+

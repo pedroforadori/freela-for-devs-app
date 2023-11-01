@@ -1,15 +1,48 @@
-.content-project {
-    padding: 12px;
-    border-radius: 6px;
-    background-color: #3c3956;
-    width: 95%;
+.dark-theme{
+    .content-project {
+        background-color: var(--dark-second);
+    }
+
+    background-color: var(--dark);
+
+    h1{
+        color: #fff;
+    }
+
+    p {
+        color: #fff;
+    }
+}
+
+.light-theme {
+    
+    .content-project {
+        background-color: var(--light-second);
+    }
+
+    background-color: var(--light);
+
+    h1{
+        color: #000;
+    }
+
+    p {
+        color: #000;
+    }
+
+    
 }
 
 @media screen and (min-width: 641px) { 
     .content-project {
         padding: 12px;
         border-radius: 6px;
-        background-color: #3c3956;
         width: 80%;
+    }
+}
+
+@media screen and (max-width: 640px) { 
+    .content-project {
+        width: 95%;
     }
 }

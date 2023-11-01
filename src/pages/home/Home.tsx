@@ -25,9 +25,11 @@ const Home = () => {
 
   return (
     <div className={theme === "light" ? "home-light" : "home-dark"}>
-      <MenuTop />
-      <div className="searchTerm">
-          <SearchTerm />
+      <div className="menu-fixed">
+        <MenuTop />
+        <div className="searchTerm">
+            <SearchTerm />
+        </div>
       </div>
       {user?.type === 1 
         ? <ClientProjects
