@@ -1,5 +1,5 @@
-import FormRegister from '../../components/forms/FormRegister';
-import './Styles.scss';
+import FormRegister from '../../components/forms/formRegister';
+import './styles.scss';
 
 const Register = () => {
   return (

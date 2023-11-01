@@ -1,5 +1,5 @@
-import FormLogin from '../../components/forms/FormLogin';
-import './Styles.scss';
+import FormLogin from '../../components/forms/formLogin';
+import './styles.scss';
 
 const Login = () => {
   return (

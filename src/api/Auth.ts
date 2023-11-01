@@ -1,4 +1,4 @@
-import { LoginType } from "../types/LoginType";
+import { LoginType } from "../types/loginType";
 import axios from "axios";
 
 const baseUrl = import.meta.env.VITE_REACT_API_URL

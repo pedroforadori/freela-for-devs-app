@@ -7,18 +7,18 @@ import {
   IconButton,
   Center,
 } from "@chakra-ui/react";
-import "./Styles.scss";
+import "./styles.scss";
 import { ArrowBendRightDown, Moon, Sun } from "@phosphor-icons/react";
 import { useContext } from "react";
-import { ThemeContext } from "../../context/Theme";
-import { AuthContext } from "../../context/user";
+import { ThemeContext } from "../../context/theme";
+import { UserContext } from "../../context/user";
 import { useNavigate } from "react-router-dom";
 
 
 const MenuTop = () => {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const { logout, user } = useContext(AuthContext);
+  const { logout, user } = useContext(UserContext);
 
   const handleSwitch = () => {
     toggleTheme();

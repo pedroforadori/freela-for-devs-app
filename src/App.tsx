@@ -1,4 +1,4 @@
-import { ThemeProvider } from "./context/Theme";
+import { ThemeProvider } from "./context/theme";
 import Routes from "./routes";
 
 function App() {

@@ -1,0 +1,15 @@
+.content-project {
+    padding: 12px;
+    border-radius: 6px;
+    background-color: #3c3956;
+    width: 95%;
+}
+
+@media screen and (min-width: 641px) { 
+    .content-project {
+        padding: 12px;
+        border-radius: 6px;
+        background-color: #3c3956;
+        width: 80%;
+    }
+}

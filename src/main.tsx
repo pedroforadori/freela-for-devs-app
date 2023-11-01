@@ -3,14 +3,14 @@ import ReactDOM from "react-dom/client";
 import { ChakraProvider } from "@chakra-ui/react";
 import "./styles/global.scss";
 import App from "./App";
-import { AuthProvider } from "./context/user";
+import { UserProvider } from "./context/user";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ChakraProvider>
-      <AuthProvider>
+      <UserProvider>
         <App />
-      </AuthProvider>
+      </UserProvider>
     </ChakraProvider>
   </React.StrictMode>
 );

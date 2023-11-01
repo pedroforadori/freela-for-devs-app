@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import "./Styles.scss";
+import "./styles.scss";
 import { FormEvent, useContext, useState } from "react";
-import { AuthContext } from "../../context/user";
+import { UserContext } from "../../context/user";
 import Error from "../error/error";
-import { UserType } from "../../types/LoginType";
+import { UserType } from "../../types/loginType";
 import ShowPassword from "../showPassword/showPassword";
 
 const FormRegister = () => {
@@ -14,7 +14,7 @@ const FormRegister = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [type, setType] = useState(0);
-  const { error, create } = useContext(AuthContext);
+  const { error, create } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false)
   const [showPasswordConfirm, setShowPasswordConfirm] = useState(false)
   const handleShowPassword = () => setShowPassword(!showPassword)

@@ -1,7 +1,7 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
-import "./Styles.scss";
+import "./styles.scss";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/user";
+import { UserContext } from "../../context/user";
 import Error from "../error/error";
 import ShowPassword from "../showPassword/showPassword";
 
@@ -9,7 +9,7 @@ const FormLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [buttonError, setButtonError] = useState(false);
-  const { login, error } = useContext(AuthContext);
+  const { login, error } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState(false)
   const handleShowPassword = () => setShowPassword(!showPassword)
   

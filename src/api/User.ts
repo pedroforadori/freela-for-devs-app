@@ -1,10 +1,10 @@
-import { LoginType, UserType } from "../types/LoginType";
+import { LoginType, UserType } from "../types/loginType";
 import axios from "axios";
 
 const baseUrl = import.meta.env.VITE_REACT_API_URL
 
-export const editUser = async (id?: string, user?: UserType) => {
-  const response = await axios.put(`${baseUrl}/user/${id}`, {
+export const editUser = async (user?: UserType) => {
+  const response = await axios.put(`${baseUrl}/user/${user?.id}`, {
     Fullname: user?.fullname,
     Email: user?.email,
     Password: user?.password,
@@ -12,6 +12,8 @@ export const editUser = async (id?: string, user?: UserType) => {
     Type: user?.type,
     Theme: user?.theme
   });
+
+  console.log(response)
 
   if (response.status !== 200 ) {
     throw new Error("Something went wrong");

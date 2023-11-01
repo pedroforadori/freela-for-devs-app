@@ -1,11 +1,11 @@
 import { createContext, useEffect, useState } from "react";
-import { LoginType, PropsType, UserType } from "../types/LoginType";
-import { auth } from "../api/Auth";
-import { newUser } from "../api/User";
+import { LoginType, PropsType, UserType } from "../types/loginType";
+import { auth } from "../api/auth";
+import { newUser } from "../api/user";
 
-export const AuthContext = createContext<LoginType>({} as LoginType);
+export const UserContext = createContext<LoginType>({} as LoginType);
 
-export const AuthProvider = ({ children }: PropsType) => {
+export const UserProvider = ({ children }: PropsType) => {
   const [user, setUser] = useState<object | null>(null);
   const [error, setError] = useState("")
   const [loading, setLoading ] = useState(true)
@@ -19,7 +19,6 @@ export const AuthProvider = ({ children }: PropsType) => {
         setUser(JSON.parse(storageUser))
       }
     }
-
     loadStorageData()
   }, [])
 
@@ -57,10 +56,10 @@ export const AuthProvider = ({ children }: PropsType) => {
   }
 
   return (
-    <AuthContext.Provider
+    <UserContext.Provider
       value={{ user, login, logout, isAuth: !!user, loading, error, create }}
     >
       {children}
-    </AuthContext.Provider>
+    </UserContext.Provider>
   );
 };
