@@ -2,11 +2,26 @@ import "./styles.scss";
 import { Box, Center, Flex, Heading, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ProjectType } from "../../types/projectType";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../context/theme"
+import { getProjectById } from "../../api/project";
+import { UserContext } from "../../context/user";
 
-const ClientProjects = ({ project }: ProjectType) => {
+const ClientProjects = () => {
   const { theme } = useContext(ThemeContext);
+  const { user } = useContext(UserContext);
+  const [ project, setProject ] = useState<ProjectType>();
+
+  useEffect(() => {
+    const getProject = async (id?: string) => {
+      const responseProject: ProjectType = await getProjectById(id)
+      setProject(responseProject)
+    }
+
+    getProject(user?.id)
+    
+  }, [user?.id])
+  
   return (
     <Link to={""}>
       <div className={theme === "light" ? "light-theme" : "dark-theme"}>
