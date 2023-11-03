@@ -6,9 +6,10 @@ import {
   MenuDivider,
   IconButton,
   Center,
+  Button,
 } from "@chakra-ui/react";
 import "./styles.scss";
-import { ArrowBendRightDown, Moon, Sun } from "@phosphor-icons/react";
+import { ArrowBendRightDown, Moon, Plus, Sun } from "@phosphor-icons/react";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/theme";
 import { UserContext } from "../../context/user";
@@ -31,8 +32,14 @@ const MenuTop = () => {
 
   return (
     <nav className="menu">
-      <h2>Freela For Devs</h2> 
+      <h2>Freela For Devs</h2>
       <Center gap="4px">
+      <Button 
+        leftIcon={<Plus width={18}/>} 
+        className="new-project"
+      >
+        Criar Projeto
+      </Button>
         <IconButton 
           variant='outline'
           icon={theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
