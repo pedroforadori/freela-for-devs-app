@@ -13,8 +13,6 @@ export const editUser = async (user?: UserType) => {
     Theme: user?.theme
   });
 
-  console.log(response)
-
   if (response.status !== 200 ) {
     throw new Error("Something went wrong");
   }

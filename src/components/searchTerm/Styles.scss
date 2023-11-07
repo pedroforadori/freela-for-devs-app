@@ -1,17 +1,22 @@
 @media screen and (max-width: 640px) { 
     .input-search{
-        padding: 10px;
+        // padding: 10px;
+        margin-top: 58px;
     }
 }
 
 @media screen and (min-width: 641px) { 
     .input-search{
-        margin-top: 12px;
-        padding-left: 145px;
-        padding-right: 145px;
+        margin-top: 58px;
+        // padding-left: 145px;
+        // padding-right: 145px;
     } 
 }
 
 .ico {
     padding: 5px;
+}
+
+.searchTerm{
+    width: 90%;
 }

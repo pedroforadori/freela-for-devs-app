@@ -13,8 +13,7 @@ import { ArrowBendRightDown, Moon, Plus, Sun } from "@phosphor-icons/react";
 import { useContext } from "react";
 import { ThemeContext } from "../../context/theme";
 import { UserContext } from "../../context/user";
-import { useNavigate } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 
 const MenuTop = () => {
   const navigate = useNavigate();
@@ -32,14 +31,19 @@ const MenuTop = () => {
 
   return (
     <nav className="menu">
-      <h2>Freela For Devs</h2>
+      <Link to={"/"}>
+        <h2>Freela For Devs</h2>
+      </Link>
       <Center gap="4px">
+      <Link to={"/registerProject"}>
       <Button 
-        leftIcon={<Plus width={18}/>} 
-        className="new-project"
-      >
-        Criar Projeto
-      </Button>
+          leftIcon={<Plus width={18}/>} 
+          className="new-project"
+        >
+          Criar Projeto
+        </Button>
+      </Link>
+      
         <IconButton 
           variant='outline'
           icon={theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}

@@ -8,8 +8,6 @@
     }
 
     .menu-fixed{
-        position: sticky;
-        top: 0;
         background-color: var(--light);
     }
 }
@@ -35,10 +33,15 @@
     }
 
     .menu-fixed{
-        position: sticky;
-        top: 0;
         background-color: var(--dark);
-        padding-bottom: 8px;
     }
 }
 
+.menu-fixed{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: var(--dark);
+    padding: 8px;
+    z-index: 1;
+}

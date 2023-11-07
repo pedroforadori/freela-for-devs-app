@@ -1,26 +1,19 @@
 import "./styles.scss";
 import { useContext } from "react";
-import MenuTop from "../../components/menu/menu";
-import ClientProjects from "../../components/clientProjects/clientProjects";
-import SearchTerm from "../../components/searchTerm/SearchTerm";
+import MenuTop from "../../components/menuTop/menuTop";
 import { ThemeContext } from "../../context/theme";
-import { UserContext } from "../../context/user";
+import { Outlet } from "react-router-dom";
 
 const Home = () => {
   const { theme } = useContext(ThemeContext);
-  const { user } = useContext(UserContext);
+
   
   return (
     <div className={theme === "light" ? "home-light" : "home-dark"}>
       <div className="menu-fixed">
         <MenuTop />
-        <div className="searchTerm">
-            <SearchTerm />
-        </div>
       </div>
-      {user?.type === 1 
-        ? <ClientProjects /> 
-        : undefined}
+      <Outlet />
     </div>
   );
 };

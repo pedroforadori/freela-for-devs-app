@@ -3,19 +3,21 @@ import "./styles.scss";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import { UserContext } from "../../context/user";
 import { useContext } from "react";
+import { ThemeContext } from "../../context/theme";
 
 const SearchTerm = () => {
   const { user } = useContext(UserContext);
+  const { theme } = useContext(ThemeContext)
   
   return (
     <Box 
       justifyContent="center" 
-      width={"100%"}
+      width={"80%"}
     >
       <Stack spacing={4} className="input-search">
         <InputGroup>
           <InputLeftElement pointerEvents="none">
-          <MagnifyingGlass size={24} />
+          <MagnifyingGlass size={24} color={theme === "light" ? "#000" : "#fff"}/>
           </InputLeftElement>
           <Input 
             type="tel" 
@@ -25,7 +27,6 @@ const SearchTerm = () => {
         </InputGroup>
       </Stack>
     </Box>
-    
   );
 };
 
