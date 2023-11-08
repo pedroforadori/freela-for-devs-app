@@ -20,7 +20,7 @@ const ClientProjects = () => {
     };
 
     getProject(user?.id);
-  }, [user?.id]);
+  }, [user?.id, project]);
 
   return (
     <Link to={""}>
@@ -40,7 +40,7 @@ const ClientProjects = () => {
             <Box className="content-project" marginBottom={8} key={item.id}>
               <Flex justifyContent="space-between">
                 <Heading as="h2" size="lg" flex={1}>
-                  {item.title} Project name Project name Project name
+                  {item.title}
                 </Heading>
                 <Text color="#fff" fontWeight="bold">
                   R$ {item.budget}
@@ -48,12 +48,7 @@ const ClientProjects = () => {
               </Flex>
 
               <Text fontSize="sm" marginTop={3} textAlign="justify">
-                {item.description}
-                Boa tarde Preciso de um freelancer que saiba configurar bling
-                com marketplaces e olist (integração já está pronta, precisamos
-                somente configurar).É Necessário que a pessoa tenha
-                conhecimento, que já tenha feito isso anteriormente. Muitíssimo
-                obrigada desde já. Roberta
+                {item.descriptionProject}
               </Text>
               <Flex justifyContent="space-between" fontSize={10} marginTop={2}>
                 <Text color="#fff" marginTop={3}>

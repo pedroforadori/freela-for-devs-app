@@ -1,7 +1,7 @@
 export type ProjectType = {
   id?: string;
   title?: string;
-  description?: string;
+  descriptionProject?: string;
   budget?: number;
   specialty?: number;
 }[];
